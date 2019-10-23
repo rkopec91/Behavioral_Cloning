@@ -94,6 +94,9 @@ def train_model(model, samples):
     model.summary()
 
 if __name__ == "__main__":
+    gpu_options = tf.GPUOptions(allow_growth=True)
+    sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+    keras.backend.tensorflow_backend.set_session(sess)
     samples = read_lines()
     model = create_model()
 
